@@ -1,0 +1,28 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+.cont{
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+}
+.nav{
+    position: absolute;
+    background-color: blue;
+    height: 50px;
+    width: 100%;
+}
+.linkClasses{
+    color: rgb(4, 9, 68);
+}
+.lnk{
+    color: rgb(255, 255, 255);
+    margin-right: 2em;
+}
+.gr{
+    color: rgb(255, 255, 255);
+}
+a:-webkit-any(:any-link){
+    text-decoration: none;
+}
