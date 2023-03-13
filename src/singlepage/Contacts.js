@@ -1,6 +1,7 @@
 import { Box, Toolbar } from '@mui/material'
 import React from 'react'
 import DrawerAppBar from '../NavComponents/DrawerAppBar'
+import Footer from '../NavComponents/Footer'
 
 const Contacts = () => {
   return (
@@ -10,6 +11,7 @@ const Contacts = () => {
           <Toolbar/>
           <h1>Contacts</h1>
         </Box>
+        <Footer/>
     </>
   )
 }

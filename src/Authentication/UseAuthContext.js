@@ -20,6 +20,10 @@ export function UserAuthContextProvider({children}) {
         return signInWithEmailAndPassword(auth, email, password);
     }
 
+    function adminLogin(email,password) {
+        return signInWithEmailAndPassword(auth, email, password);        
+    }
+
     function logout(){
         return signOut(auth);
     }

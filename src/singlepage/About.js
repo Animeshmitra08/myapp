@@ -1,6 +1,7 @@
 import React from 'react'
 import { Box, Toolbar } from '@mui/material'
 import DrawerAppBar from '../NavComponents/DrawerAppBar'
+import Footer from '../NavComponents/Footer'
 
 const About = () => {
   return (
@@ -10,6 +11,7 @@ const About = () => {
           <Toolbar/>
           <h1>About</h1>
         </Box>
+        <Footer/>
     </>
   )
 }

@@ -10,21 +10,17 @@ import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import Badge from '@mui/material/Badge';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import { mainListItems, secondaryListItems } from './listItems';
-import Deposits from './Deposits';
-import Orders from './Orders';
 import { useUserAuth } from '../Authentication/UseAuthContext';
 
 import LogoutIcon from '@mui/icons-material/Logout';
-import { useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 function Copyright(props) {
   return (
@@ -156,8 +152,6 @@ function DashboardContent() {
             <IconButton color="inherit" onClick={handleLogout}>
               <LogoutIcon/>
             </IconButton>
-
-
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>
@@ -165,10 +159,11 @@ function DashboardContent() {
             sx={{
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'flex-end',
+              justifyContent: 'space-between',
               px: [1],
             }}
           >
+          <Typography sx={{marginLeft:5}} variant='h5'>My App</Typography>
             <IconButton onClick={toggleDrawer}>
               <ChevronLeftIcon />
             </IconButton>
@@ -176,10 +171,12 @@ function DashboardContent() {
           <Divider />
           <List component="nav">
             {mainListItems}
-            <Divider sx={{ my: 1 }} />
-            {secondaryListItems}
+            {/* <Divider sx={{ my: 1 }} />
+            {secondaryListItems} */}
           </List>
         </Drawer>
+
+
         <Box
           component="main"
           sx={{
@@ -194,9 +191,11 @@ function DashboardContent() {
         >
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+
+
             <Grid container spacing={3}>
               
-              <Grid item xs={12} md={4} lg={3}>
+              {/* <Grid item xs={12} md={4} lg={3}>
                 <Paper
                   sx={{
                     p: 2,
@@ -205,15 +204,19 @@ function DashboardContent() {
                     height: 240,
                   }}
                 >
-                  <Deposits />
+                  
+                  
                 </Paper>
-              </Grid>
-              {/* Recent Orders */}
+              </Grid> */}
+
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                  <Orders />
+                  <Outlet/>
+
+                  
                 </Paper>
               </Grid>
+
             </Grid>
             <Copyright sx={{ pt: 4 }} />
           </Container>

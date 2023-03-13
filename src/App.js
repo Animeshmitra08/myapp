@@ -11,6 +11,8 @@ import SignUp from './Authentication/SignUp';
 import { Certificate } from './Pages/Certificate';
 import { UserAuthContextProvider } from './Authentication/UseAuthContext';
 import ProtectedRoute from './Authentication/ProtectedRoute';
+import Profile from './Pages/Profile';
+import Exam from './Pages/Exam';
 
   
 
@@ -31,7 +33,12 @@ function App() {
             <ProtectedRoute>
               <Dashboard/>
             </ProtectedRoute>
-          }/>
+          }>
+            <Route path='profile' element={<Profile/>}/>
+            <Route path='exam' element={<Exam/>}/>
+          </Route>
+
+
 
           <Route exact path='/contact' element={<Contacts/>}/>
           <Route exact path='/about' element={<About/>}/>
