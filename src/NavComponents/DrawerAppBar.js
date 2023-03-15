@@ -25,7 +25,6 @@ import InputBase from '@mui/material/InputBase';
 
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useUserAuth } from '../Authentication/UseAuthContext';
-import { Button } from 'bootstrap';
 
 const drawerWidth = 240;
 const navItems = [
@@ -56,12 +55,12 @@ const settings = [
   {
     id:1,
     name:'Profile',
-    link: '/prof'
+    link: '/dashboard/profile'
   },
   {
     id:2,
-    name:'Account',
-    link: '/acc'
+    name:'Exam',
+    link: '/dashboard/exam'
   },
   {
     id:3,
@@ -79,9 +78,6 @@ const settings = [
 
 function ElevationScroll(props) {
   const { children, window } = props;
-  // Note that you normally won't need to set the window ref as useScrollTrigger
-  // will default to window.
-  // This is only being set here because the demo is in an iframe.
   const trigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: 0,
@@ -127,7 +123,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'inherit',
   '& .MuiInputBase-input': {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create('width'),
     width: '100%',
@@ -172,16 +167,6 @@ function DrawerAppBar(props) {
     setMobileOpen((prevState) => !prevState);
   };
 
-  const handleLogout = async (e) =>{
-    try {
-      await logout();
-    } catch (err) {
-      setError(err.message);
-      console.log(err);
-      console.log(error);
-    }
-  }
-
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
@@ -197,26 +182,6 @@ function DrawerAppBar(props) {
           </ListItem>
         ))}
       </List>
-
-      {/* <Divider/> */}
-
-      {/* {!user?
-      <List>
-          <ListItem disablePadding>
-            <ListItemButton>  
-              <NavLink to="/login">Login</NavLink>
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton>
-              <NavLink to="/register">Register</NavLink>
-            </ListItemButton>
-          </ListItem>
-      </List>
-      :
-      <Button onClick={handleLogout}>Logout</Button>} */}
-
-
     </Box>
   );
 

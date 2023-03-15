@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Login from './Authentication/Login';
 import Dashboard from './Pages/Dashboard';
@@ -34,12 +34,10 @@ function App() {
               <Dashboard/>
             </ProtectedRoute>
           }>
+            <Route index element={<Navigate to="profile" replace/>}/>
             <Route path='profile' element={<Profile/>}/>
             <Route path='exam' element={<Exam/>}/>
           </Route>
-
-
-
           <Route exact path='/contact' element={<Contacts/>}/>
           <Route exact path='/about' element={<About/>}/>
           <Route exact path='/certificate' element={<Certificate/>}/>

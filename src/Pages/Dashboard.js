@@ -13,14 +13,34 @@ import IconButton from '@mui/material/IconButton';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
-import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import { mainListItems, secondaryListItems } from './listItems';
 import { useUserAuth } from '../Authentication/UseAuthContext';
 
 import LogoutIcon from '@mui/icons-material/Logout';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
+
+
+import AssignmentIcon from '@mui/icons-material/Assignment';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import HomeIcon from '@mui/icons-material/Home';
+
+
+
+
+
+
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+
+
+
+
+
+
+
+
 
 function Copyright(props) {
   return (
@@ -85,10 +105,32 @@ const mdTheme = createTheme();
 
 
 
+const sidebar = [
+  {
+    key:1,
+    title:"Profile",
+    icons : <AccountCircleIcon/>,
+    link:'/dashboard/profile'
+  },
+  {
+    key:2,
+    title:"Exam",
+    icons : <AssignmentIcon/>,
+    link:'/dashboard/exam'
+  },
+  {
+    key:3,
+    title:"Home",
+    icons : <HomeIcon/>,
+    link:'/'
+  }
+];
+
+
 
 
 function DashboardContent() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
   };
@@ -169,10 +211,22 @@ function DashboardContent() {
             </IconButton>
           </Toolbar>
           <Divider />
-          <List component="nav">
-            {mainListItems}
-            {/* <Divider sx={{ my: 1 }} />
-            {secondaryListItems} */}
+
+          <List>
+            {sidebar.map((val,key)=>{
+              return(
+                <ListItemButton key={key}
+                onClick={()=>{
+                  window.location.pathname = val.link;
+                }}
+                >
+                  <ListItemIcon>
+                    {val.icons}
+                  </ListItemIcon>
+                  <ListItemText primary={val.title} />
+                </ListItemButton>
+              )
+            })}            
           </List>
         </Drawer>
 
@@ -194,21 +248,6 @@ function DashboardContent() {
 
 
             <Grid container spacing={3}>
-              
-              {/* <Grid item xs={12} md={4} lg={3}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 240,
-                  }}
-                >
-                  
-                  
-                </Paper>
-              </Grid> */}
-
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
                   <Outlet/>
@@ -216,7 +255,6 @@ function DashboardContent() {
                   
                 </Paper>
               </Grid>
-
             </Grid>
             <Copyright sx={{ pt: 4 }} />
           </Container>

@@ -37,14 +37,14 @@ const theme = createTheme();
 
 
 
-export default function Login(){
+export default function AdminLogin(){
 
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const { login } = useUserAuth();
+  const { adminLogin, user } = useUserAuth();
   const navigate = useNavigate();
 
 
@@ -52,7 +52,7 @@ export default function Login(){
         event.preventDefault();
 
         try {
-          await login(email,password);
+          await adminLogin(email,password);
           navigate('/certificate');
         } catch (err) {
           setError(err.message);
@@ -85,7 +85,7 @@ const toggleswitch=()=>{
           }}
         >
 
-          <Button onClick={toggleswitch}><SwitchAccessShortcutAddIcon/><p>Switch to Admin Login</p></Button>
+          <Button onClick={toggleswitch}><SwitchAccessShortcutAddIcon/><p>Switch to Student Login</p></Button>
 
 
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>

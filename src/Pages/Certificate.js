@@ -7,12 +7,15 @@ import Footer from '../NavComponents/Footer';
 
 
 import TextField from '@mui/material/TextField';
+import { useUserAuth } from '../Authentication/UseAuthContext';
 
 export const Certificate = () => {
+  const { user } = useUserAuth();
   return (
     <>
         <DrawerAppBar/>
         <Toolbar/>
+        {console.log(user)}
         <Container component="main" maxWidth="xs" sx={{height:'70vh'}}>
         <CssBaseline />
         <Card variant='outlined'

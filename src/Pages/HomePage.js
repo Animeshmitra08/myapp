@@ -87,8 +87,8 @@ const HomePage = () => {
           alignItems="center"
           >   
           {cards.map((card)=>(
-            <Grid item>
-            <Card key={card.id} sx={{ maxWidth: 345 }}>
+            <Grid key={card.id} item>
+            <Card sx={{ maxWidth: 345 }}>
               <CardMedia
                 component="img"
                 alt={card.title}
